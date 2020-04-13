@@ -12,14 +12,16 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # Runs a single command using the runners shell
     - name: Setup node
       uses: actions/setup-node@v1
       with:
         node-version: 13
 
-    # Runs a set of commands using the runners shell
+    - name: Install dependencies
+      run: npm install
+
+    - name: Run tests
+      run: npm run test:ci
+
     - name: Run build
-      run: |
-        npm install
-        npm run build
+      run: npm run build
